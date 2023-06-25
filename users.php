@@ -1,9 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['uniq_id']) AND !isset($_COOKIE['uniq_id'])) {
+if (!isset($_SESSION['uniq_id'])) {
     header("location: login.php");
-} else {
-    $_SESSION['uniq_id'] = $_COOKIE['uniq_id'];
 }
 ?>
 <?php include_once "header.php"; ?>

@@ -9,7 +9,6 @@ if (!empty($email) && !empty($password)) {
     if (mysqli_num_rows($sql) > 0) {
         $row = mysqli_fetch_assoc($sql);
         $_SESSION['uniq_id'] = $row['uniq_id'];
-        setcookie("uniq_id", $row['uniq_id'], time() + 60 * 60 * 24 * 30 * 12, "/");
         echo "success";
     } else {
         echo "Email or Password is Incorrect !";

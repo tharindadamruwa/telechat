@@ -34,7 +34,6 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
                             if (mysqli_num_rows($sql3)) {
                                 $row = mysqli_fetch_assoc($sql3);
                                 $_SESSION['uniq_id'] = $row['uniq_id'];
-                                setcookie("uniq_id", $row['uniq_id'], time() + 60 * 60 * 24 * 30 * 12, "/");
                                 echo "success";
                             }
                         } else {

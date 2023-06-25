@@ -7,7 +7,6 @@ if (isset($_SESSION['uniq_id'])) {
         $status = "Offline now";
         $sql = mysqli_query($conn, "UPDATE users SET status='{$status}'  WHERE uniq_id = {$logout_id} LIMIT 1");
         if ($sql) {
-            setcookie("uniq_id", null, -time() + 60 * 60 * 24, "/");
             session_unset();
             session_destroy();
             header("location: ../login.php");
