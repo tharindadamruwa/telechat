@@ -1,6 +1,5 @@
 <?php
-session_start();
-if (isset($_SESSION['uniq_id'])) {
+if (isset($_COOKIE['uniq_id'])) {
     header("location: users.php");
 }
 ?>

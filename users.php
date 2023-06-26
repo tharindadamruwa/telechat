@@ -1,6 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['uniq_id'])) {
+if (!isset($_COOKIE['uniq_id'])) {
     header("location: login.php");
 }
 ?>
@@ -14,8 +13,8 @@ if (!isset($_SESSION['uniq_id'])) {
                 <?php
                 include_once "php/config.php";
                 $status = "Active now";
-                $sql2 = mysqli_query($conn, "UPDATE users SET status='{$status}'  WHERE uniq_id = {$_SESSION['uniq_id']} LIMIT 1");
-                $sql = mysqli_query($conn, "SELECT * FROM users WHERE uniq_id = {$_SESSION['uniq_id']}");
+                $sql2 = mysqli_query($conn, "UPDATE users SET status='{$status}'  WHERE uniq_id = {$_COOKIE['uniq_id']} LIMIT 1");
+                $sql = mysqli_query($conn, "SELECT * FROM users WHERE uniq_id = {$_COOKIE['uniq_id']}");
                 if (mysqli_num_rows($sql) > 0) {
                     $row = mysqli_fetch_assoc($sql);
                 }
@@ -27,7 +26,7 @@ if (!isset($_SESSION['uniq_id'])) {
                         <p><?php echo $row['status']; ?></p>
                     </div>
                 </div>
-                <a href="php/logout.php?user_id=<?php echo $_SESSION['uniq_id'] ?>" class="logout">Logout</a>
+                <a href="php/logout.php?user_id=<?php echo $_COOKIE['uniq_id'] ?>" class="logout">Logout</a>
             </header>
             <div class="search">
                 <span class="titsp">Select an user to start chat</span>

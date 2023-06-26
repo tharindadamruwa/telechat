@@ -1,6 +1,5 @@
 <?php
-session_start();
-$outgoing_id = $_SESSION['uniq_id'];
+$outgoing_id = $_COOKIE['uniq_id'];
 include_once "config.php";
 $searchTerm = mysqli_real_escape_string($conn, $_POST['searchTerm']);
 $output = '';

@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once "config.php";
 $fname = mysqli_real_escape_string($conn, $_POST['fname']);
 $lname = mysqli_real_escape_string($conn, $_POST['lname']);
@@ -33,7 +32,8 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
                             $sql3 = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
                             if (mysqli_num_rows($sql3)) {
                                 $row = mysqli_fetch_assoc($sql3);
-                                $_SESSION['uniq_id'] = $row['uniq_id'];
+                                // $_SESSION['uniq_id'] = $row['uniq_id'];
+                                setcookie("uniq_id", $row['uniq_id'] , time() + 60 * 60 * 24 * 30, "/");
                                 echo "success";
                             }
                         } else {

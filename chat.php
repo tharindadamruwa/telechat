@@ -1,6 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['uniq_id'])) {
+if (!isset($_COOKIE['uniq_id'])) {
     header("location: login.php");
 } elseif (!isset($_GET['user_id'])) {
     header(("location: users.php"));
@@ -43,7 +42,7 @@ if (!isset($_SESSION['uniq_id'])) {
                 </div> -->
             </div>
             <form action="#" class="typing-area">
-                <input type="text" name="outgoing_id" value="<?php echo $_SESSION['uniq_id'] ?>" hidden>
+                <input type="text" name="outgoing_id" value="<?php echo $_COOKIE['uniq_id'] ?>" hidden>
                 <input type="text" name="incoming_id" value="<?php echo $user_id ?>" hidden>
                 <input type="text" id="input" name="massage" placeholder="Type massage here...">
                 <button class="button"><ion-icon name="send"></ion-icon></button>

@@ -12,7 +12,16 @@ while ($row = mysqli_fetch_assoc($sql)) {
         $result = "No message available";
     }
     (strlen($result) > 28) ? $msg = substr($result, 0, 28) . '...' : $msg = $result;
-    ($outgoing_id == $row2['outgoing_msg_id']) ? $you = "You: " : $you = "";
+    if ($row2 && isset($row2['outgoing_msg_id'])) {
+        if ($outgoing_id == $row2['outgoing_msg_id']) {
+            $you = "You: ";
+        } else {
+            $you = "";
+        }
+    } else {
+        $you = "";
+    }
+    
     ($row['status'] == "Offline now") ? $offline = "offline" : $offline = '';
 
     $output .= '<a href="chat.php?user_id=' . $row['uniq_id'] . '">
