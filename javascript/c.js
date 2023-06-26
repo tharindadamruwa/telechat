@@ -11,7 +11,7 @@ $(document).ready(function () {
     //  || 
     sendBtn.click(function () {
         $.ajax({
-            url: "php/insert-chat.php",
+            url: "php/insert.php",
             type: "POST",
             data: new FormData(form[0]),
             processData: false,
@@ -27,7 +27,7 @@ $(document).ready(function () {
     });
     setInterval(() => {
         $.ajax({
-            url: "php/get-chat.php",
+            url: "php/get.php",
             type: "POST",
             data: new FormData(form[0]),
             processData: false,
